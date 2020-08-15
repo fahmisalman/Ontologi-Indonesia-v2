@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<!-- Required meta tags -->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Result - Ontologi Indonesia Web App</title>
+	<!-- plugins:css -->
+	<!-- endinject -->
+	<!-- End plugin css for this page -->
+	<!-- inject:css -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<!-- endinject -->
+	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}" />
+</head>
+
+<body>
+	<div class="container-scroller">
+		<!-- partial:partials/_navbar.html -->
+		<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+			<div class="navbar-brand-wrapper d-flex justify-content-center">
+				<div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
+					<!--<form action="/" method="GET">-->
+					<a class="navbar-brand brand-logo" href="/"><img
+							src="{{ url_for('static', filename='images/logo PMP 2.png') }}" alt="logo" /></a>
+					<!--<a class="navbar-brand brand-logo" href="/">PMP</a>-->
+					<!--<img src="{{ url_for('static', filename='images/logo.svg') }}"-->
+					<!--    alt="logo" />-->
+					<!--<a class="navbar-brand brand-logo-mini" href="/"><img src="{{ url_for('static', filename='images/logo-mini.svg') }}"-->
+					<!--    alt="logo" /></a>-->
+					<!--</form>-->
+					<button class="navbar-toggler navbar-toggler align-self-center" type="button"
+						data-toggle="minimize">
+						<span class="mdi mdi-sort-variant"></span>
+					</button>
+				</div>
+			</div>
+			<div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+				<ul class="navbar-nav mr-lg-4 w-100">
+					<li class="nav-item nav-search d-none d-lg-block w-100">
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="search">
+									<i class="mdi mdi-magnify"></i>
+								</span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<!-- partial:partials/_sidebar.html -->
+			<nav class="sidebar sidebar-offcanvas" id="sidebar">
+				<ul class="nav">
+					<li class="nav-item">
+						<a class="nav-link" href="/">
+							<i class="mdi mdi-home menu-icon"></i>
+							<span class="menu-title">Dashboard</span>
+						</a>
+						<a class="nav-link" href="/about">
+							<i class="mdi mdi-home menu-icon"></i>
+							<span class="menu-title">About</span>
+						</a>
+						<a class="nav-link" href="/list_new_traits">
+							<i class="mdi mdi-home menu-icon"></i>
+							<span class="menu-title">List New Traits</span>
+						</a>
+						<a class="nav-link" href="/list_all_traits">
+							<i class="mdi mdi-home menu-icon"></i>
+							<span class="menu-title">List All Traits</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<!-- partial -->
+			<div class="main-panel">
+				<div class="content-wrapper">
+					<div class="row">
+						<div class="col-lg-8 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<form class="forms-sample" method="POST" action="/submit_trait">
+										<div class="form-group">
+											<h4 class="card-title">Traits</h4>
+											<select id="traits" class="form-control" name="traits">
+												{% for trait in traits: %}
+												<option value="{{ trait[0] }}"> {{ trait[1] }}, {{ trait[2] }}, {{ trait[3] }} </option>
+												{% endfor %}
+											</select>
+											<br>
+											<br>
+											<h4 class="card-title">Password</h4>
+											<input type="password" class="form-control" name="pass" rows="1"></input>
+										</div>
+										<button type="submit" class="btn btn-primary mr-2">Submit</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+				<footer class="footer">
+					<div class="d-sm-flex justify-content-center justify-content-sm-between">
+						<span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019.
+							All rights
+							reserved.</span>
+					</div>
+				</footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+	<!-- container-scroller -->
+	<!-- End plugin js for this page-->
+	<!-- inject:js -->
+	<script src="js/off-canvas.js"></script>
+	<script src="js/hoverable-collapse.js"></script>
+	<script src="js/template.js"></script>
+	<!-- endinject -->
+	<!-- Custom js for this page-->
+	<script src="{{ url_for('static', filename='js/chart.js/Chart.min.js') }}"></script>
+	<script src="js/data-table.js"></script>
+	<script src="js/jquery.dataTables.js"></script>
+	<script src="js/dataTables.bootstrap4.js"></script>
+	<!-- End custom js for this page-->
+</body>
+
+</html>
